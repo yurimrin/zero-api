@@ -43,8 +43,8 @@ class Conversation(implicit timeout: Timeout) extends Actor with ConversationMar
 
   private def requestApi(uri: String, message: String) = {
     val REQUEST_HEADER_LIST = Vector(
-      headers.`Accept-Charset`.apply(HttpCharsets.`UTF-8`),
-      headers.`Content-Type`(ContentType(MediaTypes.`application/json`))
+      headers.`Accept-Charset`.apply(HttpCharsets.`UTF-8`)
+//      headers.`Content-Type`(ContentType(MediaTypes.`application/json`))
     )
     val body = ZeroRequestJson(appId, message).toJson
     val httpRequest = HttpRequest(HttpMethods.POST, uri, REQUEST_HEADER_LIST, HttpEntity(ContentTypes.`application/json`, body.compactPrint))
